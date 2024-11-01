@@ -5,12 +5,11 @@ import os
 import base64
 import requests
 from io import StringIO
-import _config
 from datetime import datetime
 from PIL import Image
 
 # OpenAI API Key
-api_key = _config.KEY
+api_key = os.environ['FoodTracker']
 
 # プロンプト（商品名、価格、個数を抽出する）
 extract_prompt = """
