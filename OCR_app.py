@@ -5,12 +5,11 @@ import os
 import base64
 import requests
 from io import StringIO
-import _config
 from datetime import datetime
 from PIL import Image
 
 # OpenAI API Key
-api_key = _config.KEY
+api_key =  "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"
 
 # プロンプト（商品名、価格、個数を抽出する）
 extract_prompt = """
