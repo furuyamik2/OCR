@@ -5,11 +5,12 @@ import os
 import base64
 import requests
 from io import StringIO
+import _config
 from datetime import datetime
 from PIL import Image
 
 # OpenAI API Key
-api_key =  "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"
+api_key = _config.KEY
 
 # プロンプト（商品名、価格、個数を抽出する）
 extract_prompt = """
@@ -47,6 +48,10 @@ def encode_image(image):
 
 def ocr_to_csv(uploaded_files, output_folder, output_name):
     concat_df = pd.DataFrame([])
+
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+        
     for uploaded_file in uploaded_files:
         
         image = Image.open(uploaded_file)
@@ -171,7 +176,7 @@ def ocr_to_csv(uploaded_files, output_folder, output_name):
                 product_price_index += 1
 
         # データフレームを作成し、カラム名を設定
-        df = pd.DataFrame(categorized_data, columns=None)
+        df = df = pd.DataFrame(categorized_data, columns=["商品名", "価格", "個数", "カテゴリー", "名称", "登録日"])
         df['ファイル名'] = uploaded_file.name
 
         concat_df = pd.concat([concat_df, df])
