@@ -48,9 +48,6 @@ def encode_image(image):
 
 def ocr_to_csv(uploaded_files, output_folder, output_name):
     concat_df = pd.DataFrame([])
-
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
         
     for uploaded_file in uploaded_files:
         
