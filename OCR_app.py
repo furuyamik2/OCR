@@ -9,7 +9,7 @@ from datetime import datetime
 from PIL import Image
 
 # OpenAI API Key
-api_key = st.secrets[’key’]
+api_key = st.secrets['key']
 
 # プロンプト（商品名、価格、個数を抽出する）
 extract_prompt = """
